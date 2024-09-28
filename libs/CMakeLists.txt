@@ -39,6 +39,10 @@ set(LUA_BUILD
 )
 
 add_library(lua STATIC ${LUA_BUILD})
-target_compile_options(lua PRIVATE -O2 -std=c99)
+if (WIN32)
+    target_compile_options(lua PRIVATE /std:c99)
+else()
+    target_compile_options(lua PRIVATE -O2 -std=c99)
+endif()
 
 target_include_directories(lua INTERFACE ${LUA_SOURCES})
