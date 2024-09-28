@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(libs)
 
 # Add LUA library
-set(LUA_SOURCES ${CMAKE_SOURCE_DIR}/libs/lua)
+set(LUA_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/lua)
 set(LUA_BUILD
     ${LUA_SOURCES}/lapi.c
     ${LUA_SOURCES}/lauxlib.c
@@ -41,4 +41,4 @@ set(LUA_BUILD
 add_library(lua STATIC ${LUA_BUILD})
 target_compile_options(lua PRIVATE -O2 -std=c99)
 
-target_include_directories(lua INTERFACE ${CMAKE_SOURCE_DIR}/lua)
+target_include_directories(lua INTERFACE ${LUA_SOURCES})
