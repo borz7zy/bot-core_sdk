@@ -1,7 +1,16 @@
 cmake_minimum_required(VERSION 3.10)
 project(bot-core_sdk)
 
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD_REQUIRED True)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}libs/lua)
+set(SDK_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(SDK_LUA_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/libs/lua")
+
+add_library(${PROJECT_NAME} INTERFACE)
+target_include_directories(${PROJECT_NAME} INTERFACE 
+    ${SDK_INCLUDE_DIR}
+    ${SDK_LUA_INCLUDE_DIR}
+)
